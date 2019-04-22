@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+    <display-name>blog</display-name>
+    <welcome-file-list>
+
+
+        <welcome-file>login.jsp</welcome-file>
+        <welcome-file>default.html</welcome-file>
+        <welcome-file>default.htm</welcome-file>
+        <welcome-file>default.jsp</welcome-file>
+    </welcome-file-list>
+    <filter>
+        <filter-name>loginFilter</filter-name>
+        <filter-class>controller.LoginFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>loginFilter</filter-name>
+        <url-pattern>/a/*</url-pattern>
+    </filter-mapping>
+
+
+
+
+
+    <servlet>
+        <servlet-name>login</servlet-name>
+        <servlet-class>controller.LoginServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>login</servlet-name>
+        <url-pattern>/f/login</url-pattern>
+    </servlet-mapping>
+
+
+
+
+
+
+
+
+    <servlet>
+        <servlet-name>region</servlet-name>
+        <servlet-class>controller.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>region</servlet-name>
+        <url-pattern>/f/region</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>user</servlet-name>
+        <servlet-class>controller.userServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>user</servlet-name>
+        <url-pattern>/a/u</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>adduser</servlet-name>
+        <servlet-class>controller.addUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>adduser</servlet-name>
+        <url-pattern>/a/au</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>deleteuser</servlet-name>
+        <servlet-class>controller.deleteUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteuser</servlet-name>
+        <url-pattern>/a/deleteuser</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>updateuser</servlet-name>
+        <servlet-class>controller.updateUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>updateuser</servlet-name>
+        <url-pattern>/a/updateuser</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+    <servlet-name>user1</servlet-name>
+    <servlet-class>controller.Servlet1</servlet-class>
+</servlet>
+    <servlet-mapping>
+        <servlet-name>user1</servlet-name>
+        <url-pattern>/a/u1</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>SearchUser</servlet-name>
+        <servlet-class>controller.SearchUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchUser</servlet-name>
+        <url-pattern>/a/SearchUser</url-pattern>
+    </servlet-mapping>
+
+
+</web-app>
