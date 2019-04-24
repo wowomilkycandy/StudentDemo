@@ -5,6 +5,11 @@ import bean.Dbutil;
 import bean.Page;
 import bean.Student;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -245,6 +250,39 @@ public class StudentManager {
             // TODO: handle exception
         }
         return user;
+    }
+    public void app(int i, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        StudentManager userDao=new StudentManager();
+
+        Page page=new Page(request,response);
+        page=userDao.query(page);
+        if(i==1)
+            request.getRequestDispatcher("../a/addUser.jsp").forward(request, response);
+        if(i==2)
+        {
+            request.setAttribute("page",page) ;
+            request.getRequestDispatcher("../a/managerUser.jsp").forward(request, response);
+        }
+
+        if(i==3)
+        {
+            request.setAttribute("page",page) ;
+            request.getRequestDispatcher("../a/managerUser.jsp").forward(request, response);
+        }
+        if(i==4)
+        {
+            request.setAttribute("page",page) ;
+            request.getRequestDispatcher("../a/managerUser.jsp").forward(request, response);
+        }
+        if(i==5)
+        {
+            request.setAttribute("page",page) ;
+            request.getRequestDispatcher("../a/managerUser.jsp").forward(request, response);
+        }
+        if(i==6)
+
+            request.getRequestDispatcher("../index.jsp").forward(request, response);
+
     }
 
 }
