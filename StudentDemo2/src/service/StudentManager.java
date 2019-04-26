@@ -56,19 +56,19 @@ public class StudentManager {
             }
         }
         public boolean updateUser(Student user){
-            String sql="update user set name=?,psw=?,gender=?,birDate=? ,id=? where id=?";
+            String sql="update user set name=?,psw=?,gender=?,birDate=?  where id=?";
             Connection conn=Dbutil.getConnection();
                   System.out.println("------------------------------------------------------------------------------------"+user.getId());
             try {
                 PreparedStatement ptmt=conn.prepareStatement(sql);
 
-
+                //ptmt.setString(1,user.getId());
                 ptmt.setString(1,user.getName());
                 ptmt.setString(2,user.getPsw());
                 ptmt.setString(3,user.getGender());
                 ptmt.setString(4,user.getBirDate());
+
                 ptmt.setString(5,user.getId());
-                ptmt.setString(6,user.getId());
                 ptmt.execute();
 
                 return true;
@@ -256,30 +256,40 @@ public class StudentManager {
 
         Page page=new Page(request,response);
         page=userDao.query(page);
-        if(i==1)
+        if(i==1)//增加
             request.getRequestDispatcher("../a/addUser.jsp").forward(request, response);
-        if(i==2)
+        if(i==2)//查找。。。。
         {
             request.setAttribute("page",page) ;
-            request.getRequestDispatcher("../a/managerUser.jsp").forward(request, response);
+            request.getRequestDispatcher("../a/searchStudent.jsp").forward(request, response);
         }
 
-        if(i==3)
+        if(i==3)//删除一个，，，，
+        {
+            request.setAttribute("page",page) ;
+            request.getRequestDispatcher("../a/searchStudent.jsp").forward(request, response);
+        }
+        if(i==7)//删除多个
         {
             request.setAttribute("page",page) ;
             request.getRequestDispatcher("../a/managerUser.jsp").forward(request, response);
         }
-        if(i==4)
+        if(i==4)//修改一个
+        {
+            request.setAttribute("page",page) ;
+            request.getRequestDispatcher("../a/searchStudent.jsp").forward(request, response);
+        }
+        if(i==8)//修改多个
         {
             request.setAttribute("page",page) ;
             request.getRequestDispatcher("../a/managerUser.jsp").forward(request, response);
         }
-        if(i==5)
+        if(i==5)//输出
         {
             request.setAttribute("page",page) ;
             request.getRequestDispatcher("../a/managerUser.jsp").forward(request, response);
         }
-        if(i==6)
+        if(i==6)//退出
 
             request.getRequestDispatcher("../index.jsp").forward(request, response);
 

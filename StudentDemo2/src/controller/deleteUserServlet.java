@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 @WebServlet(name = "deleteUserServlet ")
@@ -25,6 +26,7 @@ doGet(request,response);
 
         StudentManager dao=new StudentManager();
         String id=  request.getParameter("id") ;
+        int dd= Integer.parseInt(request.getParameter("dd"));
 
         try {
 
@@ -32,7 +34,17 @@ doGet(request,response);
             Page page=new Page(request,response);
             page=dao.query(page);
             request.setAttribute("page",page);
-                request.getRequestDispatcher("../a/managerUser.jsp").forward(request, response);
+            request.setAttribute("dd",dd);
+            if(dd==2){
+                request.getRequestDispatcher("../a/managerUser.jsp").forward(request,response);
+            }
+            else {
+                PrintWriter out=response.getWriter();
+
+                out.print("<script>language='javascript'>alert('delete successfully');window.location.href='../index.jsp';</script>");
+
+            }
+
 
         } catch (SQLException e) {
             e.printStackTrace();

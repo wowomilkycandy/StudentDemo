@@ -1,5 +1,7 @@
 package bean;
 
+
+
 import com.mysql.jdbc.StringUtils;
 
 import java.util.ArrayList;

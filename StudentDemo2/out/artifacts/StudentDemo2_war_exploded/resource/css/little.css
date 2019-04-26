@@ -1,0 +1,38 @@
+body,html{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color:whitesmoke;
+    background: yellowgreen;
+}
+
+form{
+    width: 50%;
+    height: 40%;
+    position:relative;
+    margin-top: 15%;
+    padding-top:2%;
+    margin-left: 25%;
+    padding-left:5%;
+    background:rgba(255,255,255,0.3) ;
+    border-radius:10px;
+
+}
+
+form > input{
+    width: 50%;
+    line-height: 30px;
+}
+
+form > input:last-child{
+    width: 40%;
+    margin-left: 23%;
+    font-size: 18px;
+    color:green;
+    line-height: 30px;
+    border: 2px dashed green;
+    text-indent: 2em;
+    text-align: center;
+    letter-spacing: 2em;
+
+}

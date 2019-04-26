@@ -17,84 +17,75 @@
 %>
 <head>
     <meta charset="UTF-8">
-    <title>蓝旭工作室</title>
+    <title>更新用户</title>
     <base href="<%=basePath%>">
-    <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.config.js"></script>
-    <script type="text/javascript" charset="utf-8" src="../ueditor/ueditor.all.min.js"> </script>
-    <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->
-    <!--这里加载的语言文件会覆盖你在配置项目里添加的语言类型，比如你在配置项目里配置的是英文，这里加载的中文，那最后就是中文-->
-    <script type="text/javascript" charset="utf-8" src="../ueditor/lang/zh-cn/zh-cn.js"></script>
     <link rel="stylesheet" type="text/css" href="../resource/css/managerChaxun.css">
     <link rel="stylesheet" type="text/css" href="../resource/css/reset.css">
-    <link rel="icon" href="../resource/images/aoao.ico" type="img/x-ico" />
-    <style type="text/css">
-    </style>
+    <%--<link rel="icon" href="../resource/images/aoao.ico" type="img/x-ico" />--%>
 </head>
 <body>
-<div class="beijing"></div>
-<div class="title">
-    <p>WELCOME  TO  BLUEMSUN</p>
-</div>
-<a href="index.html" class="ozn"><div class="shouye">返回首页</div></a>
+    <div class="beijing"></div>
+    <div class="title">
+        <p>更新信息</p>
+    </div>
+    <a href="index.jsp" class="ozn"><div class="shouye">返回首页</div></a>
 
-<div class="left">
-    <div class="huanyin ">❀❀❀管理员，欢迎你❀❀❀</div>
-    <div class="cha t" >返 回 新 闻</div>
+    <div class="left">
+        <div class="huanyin ">❀❀❀欢迎你❀❀❀</div>
+        <div class="cha t" >更新用户</div>
+    </div>
 
-</div>
 
+    <div class="right a">
+        <div class="duzi">
+            <div class="ooo">更新用户</div>
 
-<div class="right a">
-    <div class="duzi">
-        <div class="ooo">更新用户</div>
+            <form action="/a/updateuser?id=<%=request.getParameter("id")%>" name="change">
 
-        <form action="/a/updateuser?id=<%=request.getParameter("id")%>" name="change">
-
-            <div class="iii">
+                <div class="iii">
 
                     <input   hidden type="text" name="id11" value=<%=request.getParameter("id")%>>
 
-                <div class="anews">
-                    <p>学号</p>
-                    <input type="text" name="id" value=<%=request.getParameter("id")%>>
+
+
+                    <input type="text" name="id"  hidden  value=<%=request.getParameter("id")%>>
+
+                    <div class="anews">
+                        <p class="use">用户名</p>
+                        <input type="text" name="name" value=<%=request.getParameter("name")%>>
+                    </div>
+
+
+                    <div class="neirong">
+                        <p class="use">密码</p>
+                        <input type="text" name="psw">
+                    </div>
+
+
+                    <div class="neirong">
+                        <p class="use">性别</p>
+                        <input name="ses"  type="radio"value="男" checked/>男
+                        <input name="ses" type="radio"  value="女"/>女
+                    </div>
+
+                    <div class="neirong">
+                        <p class="use">出生日期</p>
+                        <input type="text" name="acade">
+                    </div>
                 </div>
-                <div class="anews">
-                    <p>用户名</p>
-                    <input type="text" name="name" value=<%=request.getParameter("name")%>>
+
+                <div>
+                    <input  hidden  name="dd" value="<%=request.getParameter("dd")%>"  >
+                    <input type="submit" value="确认修改" class="confirm">
                 </div>
-
-
-                <div class="neirong">
-                    <p>密码</p>
-                    <input type="text" name="psw">
-                </div>
-
-
-                <div class="neirong">
-                    <p>性别</p>
-                    <input name="ses"  type="radio" checked/>男
-                    <input name="ses" type="radio" />女
-                </div>
-
-                <div class="neirong">
-                    <p>出生日期</p>
-                    <input type="text" name="acade">
-                </div>
-
-
-
-
-
-            </div>
-            <div> <input type="submit" value="确认更改111" class="yes"></div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
-<script type="text/javascript">
-    var fanhui=document.getElementById('fanhui');
-    fanhui.onclick=function(){
-        window.parent.location.href='../managerChaxun.html';
-    }
-</script>
+    <script type="text/javascript">
+        var fanhui=document.getElementById('fanhui');
+        fanhui.onclick=function(){
+            window.parent.location.href='../managerChaxun.html';
+        }
+    </script>
 </body>
 </html>

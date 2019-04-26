@@ -26,6 +26,7 @@ public class SearchUserServlet extends HttpServlet {
         StudentManager dao=new StudentManager();
         Student u=new Student();
         String name=request.getParameter("name");
+        int dd= Integer.parseInt(request.getParameter("dd"));
         Page page=new Page(request,response);
         page=dao.query(page,name);
        if(page!=null)
@@ -34,8 +35,12 @@ public class SearchUserServlet extends HttpServlet {
 
            request.setAttribute("page",page);
            request.setAttribute("name",name);
+           request.setAttribute("dd",dd);
            // request.setAttribute("page",request.getParameter("page"));
-           request.getRequestDispatcher("../a/managerUser.jsp").forward(request,response);
+           if(dd==1){
+               request.getRequestDispatcher("../a/managerUser.jsp").forward(request,response);
+           }
+
        }
    else
        {

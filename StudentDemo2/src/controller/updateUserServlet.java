@@ -34,9 +34,11 @@ doGet(request,response);
 
         String ses=request.getParameter("ses");
         String acade=request.getParameter("acade");
+       int dd= Integer.parseInt(request.getParameter("dd"));
         if(name==null||psw==null){
             PrintWriter out = response.getWriter();
             request.setAttribute("id",id);
+            request.setAttribute("dd",dd);
             //out.print("<script language='JavaScript'>alert('not empty2');window.location.href='../a/updateUser.jsp';</script>");
             request.getRequestDispatcher("../a/updateUser.jsp").forward(request, response);
         }
@@ -55,7 +57,17 @@ doGet(request,response);
                 Page page=new Page(request,response);
                 page=dao.query(page);
                 request.setAttribute("page", page);
-                request.getRequestDispatcher("../a/managerUser.jsp").forward(request, response);
+                request.setAttribute("dd",dd);
+                if(dd==2){
+                    request.getRequestDispatcher("../a/managerUser.jsp").forward(request,response);
+                }
+                else {
+                    PrintWriter out=response.getWriter();
+
+                    out.print("<script>language='javascript'>alert('update successfully');window.location.href='../index.jsp';</script>");
+
+                }
+
             } else {
                 System.out.println("mememefail");
             }
