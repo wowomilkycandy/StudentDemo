@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet(name = "SearchUserServlet ")
 public class SearchUserServlet extends HttpServlet {
@@ -27,6 +28,7 @@ public class SearchUserServlet extends HttpServlet {
         Student u=new Student();
         String name=request.getParameter("name");
         int dd= Integer.parseInt(request.getParameter("dd"));
+        boolean dd1= Boolean.parseBoolean(request.getParameter("dd1"));
         Page page=new Page(request,response);
         page=dao.query(page,name);
        if(page!=null)
@@ -37,7 +39,12 @@ public class SearchUserServlet extends HttpServlet {
            request.setAttribute("name",name);
            request.setAttribute("dd",dd);
            // request.setAttribute("page",request.getParameter("page"));
-           if(dd==1){
+           if(dd1)
+           {
+               request.setAttribute("dd1",dd1);
+               request.getRequestDispatcher("../a/updateUser.jsp").forward(request,response);
+           }
+           else if(dd==1){
                request.getRequestDispatcher("../a/managerUser.jsp").forward(request,response);
            }
 

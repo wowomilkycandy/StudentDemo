@@ -21,16 +21,18 @@
 
 </head>
 <body>
+<h1>键盘输入对应序号后点击确认按钮或者敲击回车键</h1>
 <form action="/a/x" method="post">
-    <input type="radio" name="x" value="1" >插入
-    <input type="radio" name="x" value="2" >查找
-    <input type="radio" name="x"value="3" >删除一个
-    <input type="radio" name="x" value="4" >修改
-    <input type="radio" name="x" value="5" >输出
-    <input type="radio" name="x" value="6" >退出
-    <input type="radio" name="x" value="7" >删除多个
-    <input type="radio" name="x" value="8" >修改多个
-    <input type="submit" >
+    <p>1</p>插入
+    <p>2</p>查找
+    <p>3</p>删除一个
+    <p>4</p>修改
+    <p>5</p>输出
+    <p>6</p>退出
+    <p>7</p>删除多个
+    <p>8</p>修改多个
+    <input type="hidden" id="invisible" name="x">
+    <input type="submit" id="su">
 </form>
 <script type="text/javascript" src="resource/js/getKey.js"></script>
 </body>

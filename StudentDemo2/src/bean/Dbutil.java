@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Dbutil {
-    private static final String URL="jdbc:mysql://localhost:3306/blog";//链接数据库
+    private static final String URL="jdbc:mysql://localhost:3306/studentdemo";//链接数据库
     private static final String USER="root";//loginName
     private static final String PASSWORD="root";//psw
 

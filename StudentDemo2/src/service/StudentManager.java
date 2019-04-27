@@ -34,7 +34,7 @@ public class StudentManager {
                 return true;
             } catch (Exception e) {
                 // TODO Auto-generated catch block
-                System.out.println("-----------------------------------------------------------------------------------false" );
+
 
                 return false;
             }
@@ -58,8 +58,7 @@ public class StudentManager {
         public boolean updateUser(Student user){
             String sql="update user set name=?,psw=?,gender=?,birDate=?  where id=?";
             Connection conn=Dbutil.getConnection();
-                  System.out.println("------------------------------------------------------------------------------------"+user.getId());
-            try {
+                     try {
                 PreparedStatement ptmt=conn.prepareStatement(sql);
 
                 //ptmt.setString(1,user.getId());
@@ -223,15 +222,15 @@ public class StudentManager {
     }
 
 
-    public Student query1(String id){//根据登录名查询
-        String sql="select * from user where id=?";
+    public Student query1(String name){//根据登录名查询
+        String sql="select * from user where name=?";
         Connection conn=Dbutil.getConnection();
         ResultSet rs=null;
 
         Student user=null;
         try {
             PreparedStatement ptmt=conn.prepareStatement(sql);
-            ptmt.setString(1,id);
+            ptmt.setString(1,name);
             rs=ptmt.executeQuery();
             if(rs.next()){
                 user=new Student();
@@ -277,11 +276,14 @@ public class StudentManager {
         if(i==4)//修改一个
         {
             request.setAttribute("page",page) ;
+            boolean dd1=true;
+            request.setAttribute("dd1",dd1) ;
             request.getRequestDispatcher("../a/searchStudent.jsp").forward(request, response);
         }
         if(i==8)//修改多个
         {
             request.setAttribute("page",page) ;
+
             request.getRequestDispatcher("../a/managerUser.jsp").forward(request, response);
         }
         if(i==5)//输出

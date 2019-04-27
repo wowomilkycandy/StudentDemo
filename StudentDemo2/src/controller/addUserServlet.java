@@ -52,7 +52,11 @@ doGet(request,response);
                     page=dao.query(page);
                     request.setAttribute("page", page);
                     System.out.println("sucess");
-                    request.getRequestDispatcher("../a/managerUser.jsp").forward(request, response);
+                    System.out.println("fail");
+                    PrintWriter out = response.getWriter();
+                    out.print("<script language='JavaScript'>alert('add success');window.location.href='../index.jsp';</script>");
+
+
                 } else {
                     System.out.println("fail");
                     PrintWriter out = response.getWriter();

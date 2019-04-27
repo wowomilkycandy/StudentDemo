@@ -52,7 +52,8 @@
 
                     <div class="anews">
                         <p class="use">用户名</p>
-                        <input type="text" name="name" value=<%=request.getParameter("name")%>>
+                        <input type="text" name="name1" value=<%=request.getParameter("name")%>>
+
                     </div>
 
 
@@ -76,8 +77,10 @@
 
                 <div>
                     <input  hidden  name="dd" value="<%=request.getParameter("dd")%>"  >
+                    <input  hidden  name="dd1" value="${dd1}"  >
                     <input type="submit" value="确认修改" class="confirm">
                 </div>
+                <input type="text"  hidden name="name11" value=<%=request.getParameter("name")%>>
             </form>
         </div>
     </div>

@@ -24,9 +24,12 @@
 </head>
 <body>
     <form action="/a/SearchUser" class="form1">
-
+<%
+boolean dd1= Boolean.parseBoolean(request.getParameter("dd1"));
+%>
         <input type="text" name="name" >
         <input hidden type="text" name="dd" value="1">
+        <input hidden type="text" name="dd1" value="${dd1}">
         <p>请输入姓名</p>
         <input type="submit" value="提交" class="yes2" >
         <a href="../index.jsp">返回</a>

@@ -14,7 +14,7 @@ public class PageDao {
         try {
 
 
-            String sql = "select count(*) from blog";
+            String sql = "select count(*) from user";
             PreparedStatement stat = conn.prepareStatement(sql);
             ResultSet rs = stat.executeQuery();
             rs.next();

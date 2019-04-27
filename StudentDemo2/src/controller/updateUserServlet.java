@@ -27,14 +27,17 @@ doGet(request,response);
 
         StudentManager dao=new StudentManager();
         String id=  request.getParameter("id") ;
-        String id11=  request.getParameter("id11") ;
-        String name=request.getParameter("name");
+
+        String name=request.getParameter("name1");
+        String name11=request.getParameter("name11");
         String psw=request.getParameter("psw");
 
 
         String ses=request.getParameter("ses");
         String acade=request.getParameter("acade");
+        System.out.println(id + "---" + name11 + "---" + psw+"--------"+name );
        int dd= Integer.parseInt(request.getParameter("dd"));
+       boolean dd1= Boolean.parseBoolean(request.getParameter("dd1"));
         if(name==null||psw==null){
             PrintWriter out = response.getWriter();
             request.setAttribute("id",id);
@@ -43,14 +46,15 @@ doGet(request,response);
             request.getRequestDispatcher("../a/updateUser.jsp").forward(request, response);
         }
         else {
-            System.out.println(id + "---" + name + "---" + psw );
-            Student u = dao.query1(id11);
+            System.out.println(id + "---" + name11 + "---" + psw );
+            Student u = dao.query(name11);
             System.out.println(u);
-            u.setId(id);
+            u.setId(u.getId());
             u.setName(name);
             u.setPsw(MD5.MD5Encode(psw));
             u.setGender(ses);
             u.setBirDate(acade);
+            System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"+u.getName());
             System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"+u.getId());
             if (dao.updateUser(u)) {
                 System.out.println("mememesuccess");
@@ -58,7 +62,14 @@ doGet(request,response);
                 page=dao.query(page);
                 request.setAttribute("page", page);
                 request.setAttribute("dd",dd);
-                if(dd==2){
+                if(dd1)
+                {
+                    PrintWriter out=response.getWriter();
+
+                    out.print("<script>language='javascript'>alert('update successfully');window.location.href='../index.jsp';</script>");
+
+                }
+                else if(dd==2){
                     request.getRequestDispatcher("../a/managerUser.jsp").forward(request,response);
                 }
                 else {
