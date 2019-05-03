@@ -1,32 +1,21 @@
 package bean;
 
-
-
 import com.mysql.jdbc.StringUtils;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-
-public class Page{
+public class Page {
 
     private int pageNo = 1; // 当前页码
     private int pageSize = 10; // 页面大小，设置为“-1”表示不进行分页（分页无效）
-
     private long count;// 总记录数，设置为“-1”表示不查询总数
-
-
-    private List  list = new ArrayList ();
-
+    private List  list = new ArrayList (); //设置list集合，存储获得结果
 
     public Page() {
         this.pageSize = -1;
     }
-
     /**
      * 构造方法
      *
@@ -35,10 +24,9 @@ public class Page{
      * @param response
      *            用于设置 Cookie，记住页码
      */
-    public Page(HttpServletRequest request, HttpServletResponse response) {
-        this(request, response, -2);
+    public Page (HttpServletRequest request, HttpServletResponse response) {
+        this (request, response, -2);
     }
-
     /**
      * 构造方法
      *
@@ -49,27 +37,22 @@ public class Page{
      * @param defaultPageSize
      *            默认分页大小，如果传递 -1 则为不分页，返回所有数据
      */
-    public Page(HttpServletRequest request, HttpServletResponse response, int defaultPageSize) {
+    public Page (HttpServletRequest request, HttpServletResponse response, int defaultPageSize) {
         // 设置页码参数（传递repage参数，来记住页码）
         String no = request.getParameter("pageNo");
-
-
-
         //张   三
-        if(StringUtils.isNullOrEmpty(no)){
+        if (StringUtils.isNullOrEmpty(no)) {
             no="1";
         }
-        this.setPageNo(Integer.parseInt(no));
+        this.setPageNo (Integer.parseInt(no));
 
         // 设置页面大小参数（传递repage参数，来记住页码大小）
         String size = request.getParameter("pageSize");
 
-        if(null==size){
+        if(null==size) {
             size="8";
         }
-
-        this.setPageSize(Integer.parseInt(size));
-
+        this.setPageSize (Integer.parseInt(size));
     }
 
     /**
@@ -80,10 +63,9 @@ public class Page{
      * @param pageSize
      *            分页大小
      */
-    public Page(int pageNo, int pageSize) {
+    public Page (int pageNo, int pageSize) {
         this(pageNo, pageSize, 0);
     }
-
     /**
      * 构造方法
      *
@@ -94,7 +76,7 @@ public class Page{
      * @param count
      *            数据条数
      */
-    public Page(int pageNo, int pageSize, long count) {
+    public Page (int pageNo, int pageSize, long count) {
         this(pageNo, pageSize, count, new ArrayList());
     }
 
@@ -110,7 +92,7 @@ public class Page{
      * @param list
      *            本页数据对象列表
      */
-    public Page(int pageNo, int pageSize, long count, List list) {
+    public Page (int pageNo, int pageSize, long count, List list) {
         this.setCount(count);
         this.setPageNo(pageNo);
         this.pageSize = pageSize;
@@ -127,12 +109,10 @@ public class Page{
     public String getHtml() {
         return toString();
     }
-
-    public static void main(String[] args) {
+    public static void main (String[] args) {
         Page  p = new Page (3, 3);
         System.out.println(p);
     }
-
     /**
      * 获取设置总数
      *
@@ -147,7 +127,7 @@ public class Page{
      *
      * @param count
      */
-    public void setCount(long count) {
+    public void setCount (long count) {
         this.count = count;
         if (pageSize >= count) {
             pageNo = 1;
@@ -168,7 +148,7 @@ public class Page{
      *
      * @param pageNo
      */
-    public void setPageNo(int pageNo) {
+    public void setPageNo (int pageNo) {
         this.pageNo = pageNo;
     }
 
@@ -186,14 +166,9 @@ public class Page{
      *
      * @param pageSize
      */
-    public void setPageSize(int pageSize) {
+    public void setPageSize (int pageSize) {
         this.pageSize = pageSize > 500 ? 500 : pageSize;
     }
-
-
-
-
-
     /**
      * 获取本页数据对象列表
      *
@@ -208,14 +183,10 @@ public class Page{
      *
      * @param list
      */
-    public Page   setList(List  list) {
+    public Page  setList (List  list) {
         this.list = list;
-//		initialize();
         return this;
     }
-
-
-
     /**
      * 分页是否有效
      *
@@ -251,6 +222,4 @@ public class Page{
     public int getMaxResults() {
         return getPageSize();
     }
-
-
 }

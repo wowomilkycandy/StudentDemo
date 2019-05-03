@@ -1,17 +1,12 @@
 package bean;
 
 public class Student {
-
 	private String id;
-
 	private String name;
 	private String psw;
 	private String gender;
 	private String birDate;
-
-	public Student() {
-	}
-
+	public Student() { }//构造方法
 	public Student(String id, String name, String psw, String gender, String birDate) {
 		this.id = id;
 		this.name = name;
@@ -22,11 +17,11 @@ public class Student {
 
 	public String getId() {
 		return id;
-	}
+	}  //get方法
 
 	public void setId(String id) {
 		this.id = id;
-	}
+	}  //set方法
 
 	public String getName() {
 		return name;
@@ -56,7 +51,7 @@ public class Student {
 		return birDate;
 	}
 
-	public void setBirDate(String birDate) {
+	public void setBirDate (String birDate) {
 		this.birDate = birDate;
 	}
 }
