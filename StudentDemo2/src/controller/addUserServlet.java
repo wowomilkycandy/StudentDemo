@@ -17,7 +17,7 @@ import java.io.PrintWriter;
 @WebServlet(name = "addUserServlet")
 public class addUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-doGet(request,response);
+        doGet(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,7 +36,6 @@ doGet(request,response);
         if(loginName==null||psw==null||ids==null){
             PrintWriter out = response.getWriter();
             out.print("<script language='JavaScript'>alert('not empty2');window.location.href='../a/addUser.jsp';</script>");
-
         }
         else {
             u.setId( ids );
@@ -51,8 +50,8 @@ doGet(request,response);
                     Page page=new Page(request,response);
                     page=dao.query(page);
                     request.setAttribute("page", page);
-                    System.out.println("sucess");
-                    System.out.println("fail");
+                    System.out.println("sucess");      //≤‚ ‘”Ôæ‰
+                    System.out.println("fail");      //≤‚ ‘”Ôæ‰
                     PrintWriter out = response.getWriter();
                     out.print("<script language='JavaScript'>alert('add success');window.location.href='../index.jsp';</script>");
 

@@ -17,7 +17,7 @@ import java.io.PrintWriter;
 @WebServlet(name = "updateUserServlet")
 public class updateUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-doGet(request,response);
+        doGet(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,27 +35,26 @@ doGet(request,response);
 
         String ses=request.getParameter("ses");
         String acade=request.getParameter("acade");
-        System.out.println(id + "---" + name11 + "---" + psw+"--------"+name );
+        System.out.println(id + "---" + name11 + "---" + psw+"--------"+name );      //≤‚ ‘”Ôæ‰
        int dd= Integer.parseInt(request.getParameter("dd"));
        boolean dd1= Boolean.parseBoolean(request.getParameter("dd1"));
         if(name==null||psw==null){
             PrintWriter out = response.getWriter();
             request.setAttribute("id",id);
             request.setAttribute("dd",dd);
-            //out.print("<script language='JavaScript'>alert('not empty2');window.location.href='../a/updateUser.jsp';</script>");
             request.getRequestDispatcher("../a/updateUser.jsp").forward(request, response);
         }
         else {
-            System.out.println(id + "---" + name11 + "---" + psw );
+            System.out.println(id + "---" + name11 + "---" + psw );      //≤‚ ‘”Ôæ‰
             Student u = dao.query(name11);
-            System.out.println(u);
+            System.out.println(u);      //≤‚ ‘”Ôæ‰
             u.setId(u.getId());
             u.setName(name);
             u.setPsw(MD5.MD5Encode(psw));
             u.setGender(ses);
             u.setBirDate(acade);
-            System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"+u.getName());
-            System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"+u.getId());
+            System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"+u.getName());      //≤‚ ‘”Ôæ‰
+            System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"+u.getId());      //≤‚ ‘”Ôæ‰
             if (dao.updateUser(u)) {
                 System.out.println("mememesuccess");
                 Page page=new Page(request,response);
@@ -74,13 +73,12 @@ doGet(request,response);
                 }
                 else {
                     PrintWriter out=response.getWriter();
-
                     out.print("<script>language='javascript'>alert('update successfully');window.location.href='../index.jsp';</script>");
 
                 }
 
             } else {
-                System.out.println("mememefail");
+                System.out.println("mememefail");      //≤‚ ‘”Ôæ‰
             }
         }
     }

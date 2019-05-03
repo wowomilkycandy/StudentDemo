@@ -22,7 +22,7 @@ public class Servlet extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         HttpSession session=request.getSession();
         int  i= Integer.parseInt(request.getParameter("x"));
-       StudentManager s=new StudentManager();
+        StudentManager s=new StudentManager();
         s.app(i,request,response);
     }
 }

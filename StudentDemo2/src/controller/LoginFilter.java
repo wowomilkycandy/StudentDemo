@@ -12,7 +12,6 @@ public class LoginFilter implements Filter {
 	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -26,7 +25,6 @@ public class LoginFilter implements Filter {
 		if(hasLogin!=null){
 			arg2.doFilter(arg0, arg1);
 		}else{
-//			response.sendRedirect("/"+request.getServletPath()+"/f/login.jsp");
 			request.getRequestDispatcher("/login.jsp").forward(arg0, arg1);
 		}
 	}
@@ -34,8 +32,5 @@ public class LoginFilter implements Filter {
 	@Override
 	public void init(FilterConfig arg0) throws ServletException {
 		// TODO Auto-generated method stub
-
 	}
-
-	 
 }

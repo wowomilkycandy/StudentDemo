@@ -56,15 +56,12 @@ public class LoginServlet implements Servlet {
 		/**
 		 * 验证用户名密码是否正确
 		 */
-		System.out.println(loginName);
-		System.out.println(psw);
+		System.out.println(loginName);      //测试语句
+		System.out.println(psw);    	    //测试语句
 
 		if(us.checkLogin(loginName,psw)){
 			Student user=us.getUserInfo(loginName);
 			request.getSession(true).setAttribute("user", user);
-			//User user=us.getUserInfo(loginName);
-		/* User user=us.getUserInfo(loginName);
-			request.getSession(true).setAttribute("user", user);*/
 			
 			//其他成功逻辑
 			HttpSession session=request.getSession();
@@ -74,22 +71,14 @@ public class LoginServlet implements Servlet {
 			Student u=userDao.query(loginName);
 			Page page=new Page(request,response);
 			page=userDao.query(page);
-			//for(int i=0;i<=b1.size();i++){System.out.println(b1["A"]["title"]);}
-			System.out.println("bbbbbbbbbbbbbbb1");
+			System.out.println("word1");      //测试语句
 
-			//Object b2=b1.get(1).get(1);
-			// System.out.println(b1.get(1).get("id"));
 			request.setAttribute("page",page) ;
 			request.setAttribute("name",loginName);
 
-
 			request.getRequestDispatcher("../a/managerUser.jsp").forward(request, response);
-
 		}else{
-
 			request.setAttribute("msg", "登录失败,请重新登录");
-
-
 			request.getRequestDispatcher("../login.jsp").forward(request, response);
 		}
 

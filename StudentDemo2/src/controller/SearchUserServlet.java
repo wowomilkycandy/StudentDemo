@@ -31,28 +31,19 @@ public class SearchUserServlet extends HttpServlet {
         boolean dd1= Boolean.parseBoolean(request.getParameter("dd1"));
         Page page=new Page(request,response);
         page=dao.query(page,name);
-       if(page!=null)
-
-       {
+        if(page!=null){
 
            request.setAttribute("page",page);
            request.setAttribute("name",name);
            request.setAttribute("dd",dd);
-           // request.setAttribute("page",request.getParameter("page"));
-           if(dd1)
-           {
+           if(dd1){
                request.setAttribute("dd1",dd1);
                request.getRequestDispatcher("../a/updateUser.jsp").forward(request,response);
-           }
-           else if(dd==1){
+           }else if(dd==1){
                request.getRequestDispatcher("../a/managerUser.jsp").forward(request,response);
            }
-
-       }
-   else
-       {
-
-           System.out.println("hhhhhhhhhbb----jdhcwj");
+       }else{
+           System.out.println("hhhhhhhhhbb----jdhcwj");      //≤‚ ‘”Ôæ‰
        }
     }
 }

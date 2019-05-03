@@ -16,7 +16,7 @@ import java.sql.SQLException;
 @WebServlet(name = "deleteUserServlet ")
 public class deleteUserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-doGet(request,response);
+        doGet(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,7 +30,7 @@ doGet(request,response);
 
         try {
 
-             dao.delUser(id) ;
+            dao.delUser(id) ;
             Page page=new Page(request,response);
             page=dao.query(page);
             request.setAttribute("page",page);
@@ -40,12 +40,8 @@ doGet(request,response);
             }
             else {
                 PrintWriter out=response.getWriter();
-
-                out.print("<script>language='javascript'>alert('delete successfully');window.location.href='../index.jsp';</script>");
-
+                out.print("<script>language='javascript'>alert('delete successfully');window.location.href='../index.jsp';</script>");      //≤‚ ‘”Ôæ‰
             }
-
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
