@@ -12,8 +12,6 @@ public class PageDao {
         Dbutil DB = new Dbutil();
         Connection conn = DB.getConnection();
         try {
-
-
             String sql = "select count(*) from user";
             PreparedStatement stat = conn.prepareStatement(sql);
             ResultSet rs = stat.executeQuery();

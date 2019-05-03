@@ -19,7 +19,6 @@ import java.util.Map;
 public class StudentManager {
 
         public boolean addUser(Student user) throws Exception{
-
             String sql="insert into user (id,name,psw,gender,birDate) values(?,?,?,?,?)";
             System.out.println("------------------------------------------------------------------------------------"+user.getId());
             Connection conn= Dbutil.getConnection();
@@ -34,27 +33,24 @@ public class StudentManager {
                 return true;
             } catch (Exception e) {
                 // TODO Auto-generated catch block
-
-
                 return false;
             }
         }
+
         public boolean delUser(String id) throws SQLException {
-            String sql="delete from user where id=?";
+            String sql="delete from user where id=?";//删除该条内容
             Connection conn=Dbutil.getConnection();
             PreparedStatement ptmt=conn.prepareStatement(sql);
             try {
-
                 ptmt.setString(1,id);
                 ptmt.execute();
-
                 return true;
             } catch (Exception e) {
                 // TODO Auto-generated catch block
-
                 return false;
             }
         }
+
         public boolean updateUser(Student user){
             String sql="update user set name=?,psw=?,gender=?,birDate=?  where id=?";
             Connection conn=Dbutil.getConnection();
@@ -75,8 +71,6 @@ public class StudentManager {
                 // TODO Auto-generated catch block
                 return false;
             }
-
-
         }
 
     public List<Student> query(){
@@ -91,13 +85,10 @@ public class StudentManager {
             while(rs.next()){
                user=new Student();
                user.setId(rs.getString("id"));
-
                user.setName(rs.getString("name"));
                 user.setPsw(rs.getString("psw"));
                 user.setGender(rs.getString("gender"));
                 user.setBirDate(rs.getString("birDate"));
-
-
                 list.add(user);
             }
         } catch (Exception e) {
@@ -105,6 +96,7 @@ public class StudentManager {
         }
         return list;
     }
+
     public static List<Map<String, Object>> convertList(ResultSet rs) {
         // 新建一个map list集合用于存放多条查询记录
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
@@ -136,7 +128,7 @@ public class StudentManager {
     }
 
     public Page query(Page page){
-        String sql="select * from user limit ?,?";
+        String sql="select * from user limit ?,?";//查询用户信息
         Connection conn=Dbutil.getConnection();
         ResultSet rs=null;
         List list=new ArrayList<Student>();
@@ -163,6 +155,7 @@ public class StudentManager {
         }
 
     }
+
     public Page query(Page page,String name){
         String sql="select * from user where name=? limit ?,?  ";
         Connection conn=Dbutil.getConnection();
@@ -193,6 +186,7 @@ public class StudentManager {
         }
 
     }
+
     public Student query(String name){//根据登录名查询
         String sql="select * from user where name=?";
         Connection conn=Dbutil.getConnection();
@@ -221,7 +215,6 @@ public class StudentManager {
         return user;
     }
 
-
     public Student query1(String name){//根据登录名查询
         String sql="select * from user where name=?";
         Connection conn=Dbutil.getConnection();
@@ -240,9 +233,6 @@ public class StudentManager {
                 user.setPsw(rs.getString("psw"));
                 user.setGender(rs.getString("gender"));
                 user.setBirDate(rs.getString("birDate"));
-
-
-
             }
 
         } catch (Exception e) {
@@ -250,6 +240,7 @@ public class StudentManager {
         }
         return user;
     }
+
     public void app(int i, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         StudentManager userDao=new StudentManager();
 
@@ -294,7 +285,6 @@ public class StudentManager {
         if(i==6)//退出
 
             request.getRequestDispatcher("../index.jsp").forward(request, response);
-
     }
 
 }

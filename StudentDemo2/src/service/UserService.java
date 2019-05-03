@@ -9,7 +9,6 @@ public class UserService {
 
     public boolean checkLogin(String name, String psw) {
         StudentManager ud = new StudentManager();
-
         if (name.equals("") || name == null) {
             return false;
         } else {
@@ -18,16 +17,16 @@ public class UserService {
             if (user==null||user.equals(null)) {
                 System.out.println(user);
                 System.out.println("wocuollalalalala");
-
                 return false;
             } else {
                 String passw = user.getPsw();
                 System.out.println("这是密码啦啦啦啦111");
                 String mPassWord = MD5.MD5Encode(psw);
-                if (passw.equals(mPassWord))
+                if (passw.equals(mPassWord)) {
                     return true;
-                else
-                    return false;
+                }else{
+                        return false;
+                }
             }
         }
     }
@@ -35,9 +34,7 @@ public class UserService {
     public Student getUserInfo(String loginName) {
         Student user = new Student();
         user.setName(loginName);
-
         return user;
-
     }
     /*public ModelAndView authUser(UserDto userDto){
         int i=0;
